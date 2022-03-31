@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        <p>Filter results</p>
+        </div>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              {% for col_name in headers %}
+              <th scope="col">{{col_name}}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for record in records %}
+            <tr>
+              <th scope="row"></th>
+              {% for col_val in record %}
+              <td>{{ col_val }}</td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+</div>
+{% endblock %}

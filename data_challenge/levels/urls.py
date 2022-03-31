@@ -1,7 +1,3 @@
 from django.urls import path
-from levels.views import LevelsView
+from levels.views import LevelsView, FilteredView
 
-
-urlpatterns = [
-    path('', LevelsView.as_view(), name='levels_home')
-]

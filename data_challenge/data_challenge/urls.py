@@ -17,11 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from home.views import welcome
 from upload.views import UploadView
-from levels.views import LevelsView
+from levels.views import LevelsView, FilteredView, IdView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', welcome, name='home'),
     path('upload', UploadView.as_view(), name='upload'),
-    path('api/v1/levels/', include('levels.urls'))
+    path('api/v1/levels/<user_id>/<timestamp>/<sort>/<max_rows>', FilteredView.as_view(), name='filter'),
+    path('api/v1/levels/', LevelsView.as_view(), name='levels_home'),
 ]
