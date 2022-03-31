@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'levels',
     'upload',
     'home',
     'django.contrib.admin',
