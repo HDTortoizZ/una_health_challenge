@@ -7,3 +7,16 @@ nav {
     color: white;
     display: flex;
     }
+
+a {
+    padding: 16px 18px;
+    color: yellow;
+    font-family: Arial;
+    font-weight: bold;
+    text-decoration: none;
+    transition: ease 0.3s all;
+    }
+
+a:hover {
+    background: #444;
+}
