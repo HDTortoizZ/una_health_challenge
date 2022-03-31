@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/all_pages/style.css' %}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <a class="first-nav" href="{% url 'home' %}">Home</a>
+    </nav>
+    <div class="main-body">
+    {% block content %}
+    {% endblock %}
+    </div>
+</body>
+</html>
