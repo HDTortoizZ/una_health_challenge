@@ -12,5 +12,9 @@ class UploadView(TemplateView):
         return render(request, 'upload/upload.html', {'form': form})
 
     def post(self, request):
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+
         return render(request, 'upload/upload.html', {'form': UploadForm()})
 
