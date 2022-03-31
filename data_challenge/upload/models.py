@@ -12,6 +12,6 @@ class GlucoseLevels(models.Model):
     user_id = models.CharField(max_length=100)
     device = models.CharField(max_length=100)
     serial_number = models.CharField(max_length=100)
-    timestamp = models.DateField()
+    timestamp = models.DateTimeField()
     glucose_value_history = models.IntegerField()
     glucose_levels = models.IntegerField()
