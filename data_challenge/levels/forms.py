@@ -1,4 +1,4 @@
-from django.forms import Form, MultipleChoiceField
+from django.forms import Form, MultipleChoiceField, IntegerField
 from upload.models import GlucoseLevels
 
 
@@ -21,8 +21,15 @@ def get_timestamp_list():
     return [(str(item), item) for item in timestamps]
 
 
+sort_choices = [(0, 'user_id'), (1, 'device'), (2, 'serial_number'), (3, 'timestamp'),
+                (4, 'glucose_value_history'), (5, 'glucose_levels')]
+
+
 def filter_form_gen():
-    class FilterForm(Form):
-        user_id = MultipleChoiceField(label='Please enter a user_id', choices=get_user_id_list())
-        timestamp = MultipleChoiceField(label='Please enter a timestamp', choices=get_timestamp_list())
-    yield FilterForm
+    while True:
+        class FilterForm(Form):
+            user_id = MultipleChoiceField(label='Please enter a user_id', choices=get_user_id_list())
+            timestamp = MultipleChoiceField(label='Please enter a timestamp', choices=get_timestamp_list())
+            sort = MultipleChoiceField(label='sort by', choices=sort_choices)
+            max_rows = IntegerField(label='select the maximum number of displayed rows', min_value=1)
+        yield FilterForm
