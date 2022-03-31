@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
 
 class Upload(models.Model):
@@ -6,6 +7,7 @@ class Upload(models.Model):
     # As I understand it, saving files to a directory rather than the database is standard because of performance
     # issues.
     file = models.FileField(upload_to='uploads/')
+    col_row = models.IntegerField(validators=[MinValueValidator(1)])
 
 
 class GlucoseLevels(models.Model):

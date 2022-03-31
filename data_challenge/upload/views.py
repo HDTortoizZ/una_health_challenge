@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from upload.forms import UploadForm
 from upload.models import GlucoseLevels
 from datetime import datetime
+import numpy as np
 
 
 class UploadView(TemplateView):
@@ -20,9 +21,11 @@ class UploadView(TemplateView):
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            col_row = int(request.POST['col_row'])
             file = request.FILES['file']
             filename = file.name
-            df = pandas.read_csv(os.path.join(MEDIA_ROOT, 'uploads', filename), skiprows=2).fillna(0)
+            df = pandas.read_csv(os.path.join(MEDIA_ROOT, 'uploads', filename),
+                                 skiprows=[i for i in range(col_row) if i < col_row - 1]).fillna(0)
             user_id = filename[:-4]
             model_list = list()
             for i in range(df.shape[0]):
