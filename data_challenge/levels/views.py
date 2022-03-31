@@ -72,3 +72,21 @@ class FilteredView(TemplateView):
         }
         return render(request, 'levels/filtered.html', context)
 
+
+class IdView(TemplateView):
+    def get(self, request, id):
+        # Turn id into an integer.
+        id = int(id)
+        # Get the object with specified id.
+        item = GlucoseLevels.objects.get(pk=id)
+        # get values ready for the table.
+        headers = ['User_id', 'Device', 'Serial_number', 'Timestamp', 'Glucose value history', 'Glucose levels']
+        records = [(item.user_id,
+                    item.device,
+                    item.serial_number,
+                    item.timestamp,
+                    item.glucose_value_history,
+                    item.glucose_levels)]
+        context = {'headers': headers, 'records': records}
+        # Can reuse this template.
+        return render(request, 'levels/filtered.html', context)

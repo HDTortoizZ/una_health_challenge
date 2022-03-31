@@ -24,5 +24,6 @@ urlpatterns = [
     path('', welcome, name='home'),
     path('upload', UploadView.as_view(), name='upload'),
     path('api/v1/levels/<user_id>/<timestamp>/<sort>/<max_rows>', FilteredView.as_view(), name='filter'),
+    path('api/v1/levels/<id>', IdView.as_view(), name='id_view'),
     path('api/v1/levels/', LevelsView.as_view(), name='levels_home'),
 ]
