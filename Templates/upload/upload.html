@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Please upload a glucose level .csv file</h1>
+<form method="post", enctype="multipart/form-data">
+    {{form}}
+    {% csrf_token %}
+    <button type="submit">Submit file</button>
+</form>
+{% endblock %}
