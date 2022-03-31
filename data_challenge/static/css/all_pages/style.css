@@ -20,3 +20,19 @@ a {
 a:hover {
     background: #444;
 }
+
+body {
+    margin-top: 51px;
+    margin-left: 0px;
+}
+
+a.first-nav {
+    margin-left: 20px;
+}
+
+.main-body {
+    background-color: CadetBlue;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 5px;
+}
